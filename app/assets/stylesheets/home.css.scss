@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $bg-color: #eae8dc;
+$shadow-color: #595454;
+
+@mixin shadow($right-number, $top-number, $blur, $color) {
+  webkit-text-shadow: $right-number $top-number $blur $color;
+  -moz-text-shadow: $right-number $top-number $blur $color;
+  -o-text-shadow: $right-number $top-number $blur $color;
+  -ms-text-shadow: $right-number $top-number $blur $color;
+  text-shadow: $right-number $top-number $blur $color;
+}
+
 .wrapper{
   width: 790px;
   margin: auto;
@@ -27,20 +37,12 @@ $bg-color: #eae8dc;
       text-transform: uppercase;
       letter-spacing: 3px;
       line-height: 34px;
-      webkit-text-shadow: 0px 3px #595454;
-      -moz-text-shadow: 0px 3px #595454;
-      -o-text-shadow: 0px 3px #595454;
-      -ms-text-shadow: 0px 3px #595454;
-      text-shadow: 0px 3px #595454;
+      @include shadow(0px, 3px, 0px, $shadow-color);
       font-family: "Lucida Grande";
       #multiplexer{
         font-size: 30px;
         letter-spacing: 5px;
-        webkit-text-shadow: 2px 2px 2px #595454;
-        -moz-text-shadow: 2px 2px 2px #595454;
-        -o-text-shadow: 2px 2px 2px #595454;
-        -ms-text-shadow: 2px 2px 2px #595454;
-        text-shadow: 2px 2px 2px #595454;
+        @include shadow(2px, 2px, 2px, $shadow-color);
       }
     }
     .headline{
@@ -75,11 +77,7 @@ $bg-color: #eae8dc;
         text-align: center;
         text-transform: uppercase;
         color: #42868c;
-        webkit-text-shadow: 0px 0.8px white;
-        -moz-text-shadow: 0px 0.8px white;
-        -o-text-shadow: 0px 0.8px white;
-        -ms-text-shadow: 0px 0.8px white;
-        text-shadow: 0px 0.8px white;
+        @include shadow(0px, 0.8px, 0px, white);
       }
     }
   }
@@ -162,7 +160,18 @@ $bg-color: #eae8dc;
         border: 5px solid white;
         margin-left: 10px;
         margin-bottom: 10px;
+        img{
+          margin-bottom: -3px;
+        }
       }
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .wrapper{
+    .navbar{
+      margin-top: 0px;
     }
   }
 }
